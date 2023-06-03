@@ -4,34 +4,14 @@ require 'pry-byebug'
 def caesar_cipher(string, shift)
     letters = string.split("")
     shifted_letters = letters.map do |letter|
-        
-        if (letter == " ")
-            letter = letter
-        elsif (!letter.downcase.ord.between?(97, 122))
-            letter = letter
-        else
-            # letter != " " ? (letter.ord + shift).chr : return letter
-
-            if (/[[:upper:]]/.match(letter) != nil) 
-                letter_ord = letter.downcase.ord + shift
-                if (letter_ord > 122)
-                    letter_ord -= 26
-                end
-                letter = (letter_ord.chr).upcase
-            else
-                letter_ord = letter.ord + shift
-                if (letter_ord > 122)
-                    letter_ord -= 26
-                end
-                letter = (letter_ord.chr)
-            end
-        end
+        if (letter == " " || !letter.downcase.ord.between?(97, 122)) then next letter end
+        letter_ord = letter.downcase.ord + shift
+        letter_ord > 122 ? letter_ord -= 26 : letter_ord = letter_ord
+        letter_ord < 97 ? letter_ord += 26 : letter_ord = letter_ord
+        /[[:upper:]]/.match(letter) != nil ? letter = (letter_ord.chr).upcase : letter = (letter_ord.chr)
     end
     encrypted_string = shifted_letters.join
-    puts encrypted_string
+    encrypted_string
 end
 
-caesar_cipher("", 6)
-
-
-"If he had anything confidential to say, he wrote it in cipher, that is, by so changing the order of the letters of the alphabet, that not a word could be made out. And a test for SYMBOLS: $&£(^"
+# caesar_cipher("What a string!", 5)
