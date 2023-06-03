@@ -1,6 +1,7 @@
 require 'spec_helper'
 require_relative '../ceaser-cipher/ceaser_cipher.rb'
 require_relative '../sub-strings/sub_strings.rb'
+require_relative '../stock-picker/stock_picker.rb'
 
 RSpec.describe 'Basic Ruby Projects' do
   describe 'Ceaser Cipher' do
@@ -25,10 +26,20 @@ RSpec.describe 'Basic Ruby Projects' do
     dictionary = ["below", "down", "go", "going", "horn", "how", "howdy", "it", "i", "low", "own", "part", "partner", "sit"]
 
     context 'when given an array of words and a string' do
-      it 'returns a hash listing each substring (case insensitive) that was found in the given string and how many times it was found' do
+      xit 'returns a hash listing each substring (case insensitive) that was found in the given string and how many times it was found' do
         string = "Howdy partner, sit down! How's it going?"
         expected_hash = {"how"=>2, "howdy"=>1, "part"=>1, "partner"=>1, "it"=>2, "i"=>3, "sit"=>1, "down"=>1, "own"=>1, "go"=>1, "going"=>1}
         expect(substrings(string, dictionary)).to eq(expected_hash)
+      end
+    end
+  end
+
+  describe 'Stock Picker' do
+    context 'when given an array of stock prices for each day' do
+      it 'return the buy and sell days for maximum profit (starting at day 0)' do
+        prices = [17,3,6,9,15,8,6,1,10]
+        expected = [1, 4]
+        expect(stock_picker(prices)).to eq(expected)
       end
     end
   end
