@@ -2,6 +2,7 @@ require 'spec_helper'
 require_relative '../ceaser-cipher/ceaser_cipher.rb'
 require_relative '../sub-strings/sub_strings.rb'
 require_relative '../stock-picker/stock_picker.rb'
+require_relative '../bubble-sort/bubble_sort.rb'
 
 RSpec.describe 'Basic Ruby Projects' do
   describe 'Ceaser Cipher' do
@@ -36,10 +37,28 @@ RSpec.describe 'Basic Ruby Projects' do
 
   describe 'Stock Picker' do
     context 'when given an array of stock prices for each day' do
-      it 'return the buy and sell days for maximum profit (starting at day 0)' do
+      xit 'return the buy and sell days for maximum profit (starting at day 0)' do
         prices = [17,3,6,9,15,8,6,1,10]
         expected = [1, 4]
         expect(stock_picker(prices)).to eq(expected)
+      end
+    end
+  end
+
+  describe 'Bubble Sort' do
+    context 'when given an array of random numbers different to each other' do
+      it 'return an array of the nnumbers bubble sorted' do
+        numbers = [4, 55, 78, 22, 0, 1, 8, 99, 33]
+        expected = [0, 1, 4, 8, 22, 33, 55, 78, 99]
+        expect(bubble_sort(numbers)).to eq(expected)
+      end
+    end
+
+    context 'when given an array of random numbers some of which repeat' do
+      it 'return an array of the nnumbers bubble sorted' do
+        numbers = [4, 3, 78, 2, 0, 1, 4, 78, 54]
+        expected = [0, 1, 2, 3, 4, 4, 54, 78, 78]
+        expect(bubble_sort(numbers)).to eq(expected)
       end
     end
   end

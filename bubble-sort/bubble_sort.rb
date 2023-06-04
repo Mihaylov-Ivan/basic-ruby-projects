@@ -16,9 +16,8 @@ def bubble_sort(array)
             ) : next
         end
     end
-    puts array
+    array
 end
 
-bubble_sort([4,3,78,2,0,1,4,78, 54])
-
+# bubble_sort([4,3,78,2,0,1,4,78, 54])
 # bubble_sort([4,55,78,22,0,1,8,99,33])
