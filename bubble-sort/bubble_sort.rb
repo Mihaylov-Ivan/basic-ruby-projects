@@ -7,6 +7,7 @@ def bubble_sort(array)
         sorted = true
         array.each_with_index do |number, index|
             next if (index == array.length-1)
+            next if (number == array[index+1])
             number > array[index+1] ? (
                 temp = array[index+1]
                 array[index+1] = number
@@ -18,6 +19,6 @@ def bubble_sort(array)
     puts array
 end
 
-# bubble_sort([4,3,78,2,0,1])
+bubble_sort([4,3,78,2,0,1,4,78, 54])
 
 # bubble_sort([4,55,78,22,0,1,8,99,33])
